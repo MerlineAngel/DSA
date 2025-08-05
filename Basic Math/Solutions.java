@@ -83,4 +83,132 @@ class Solution {
         }
     }
 
-//
+//GCD
+
+class Solution {
+    public static int gcd(int a, int b) {
+        // code here
+        int temp;
+       while(b!=0){
+           temp=b;
+           b=a%b;
+           a=temp;
+       }
+        return a;
+    }
+}
+
+//All divisors of a Number
+class Solution {
+    public static void print_divisors(int n) {
+        ArrayList<Integer> divisors=new ArrayList<>();
+        for(int i=1;i*i<=n;i++){
+            if(n%i==0){
+            divisors.add(i);
+            if(i!=n/i)
+            divisors.add(n/i);
+            }
+        }
+            Collections.sort(divisors);
+            for(int j:divisors)
+            System.out.print(j+" ");
+    }
+public static void main(String args[]){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    print_divisors(n);
+}
+}
+
+//Prime Number
+
+class Solution {
+    static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+}
+
+//Armstrong Number 
+
+class Solution {
+    static boolean armstrongNumber(int n) {
+        int c=0;
+        int temp=n,sum=0;
+        while(n>0){
+            n/=10;
+            c++;
+        }
+        n=temp;
+        while(temp>0){
+            int r=temp%10;
+            sum=sum+(int)Math.pow(r,c);
+            temp/=10;
+        }
+        if(sum==n)
+        return true;
+        else
+        return false;
+    }
+}
+
+//Palindrome
+
+class Solution {
+    public boolean isPalindrome(int n) {
+        // code here
+        int temp=n,rem,rev=0;
+        while(n>0){
+            rem=n%10;
+            rev=rev*10+rem;
+            n/=10;
+        }
+        return rev==temp;
+        }
+       
+}
+
+//Square Root of a Number
+
+class Solution {
+    int floorSqrt(int n) {
+        // code here
+        int low=1,high=n,ans=0;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(mid*mid==n) return mid;
+            else if(mid*mid<n){
+            low=mid+1;
+            ans=mid;
+            }
+            else
+            high=mid-1;
+        }
+        return ans;
+    }
+}
+
+//Perfect Number
+
+class Solution {
+    static boolean isPerfect(int n) {
+        if(n<=1)
+        return false;
+        int sum=1;
+        for(int i=2;i*i<=n;i++){
+            if(n%i == 0){
+            sum+=i;
+            if(i!= n/i && n/i!=n)
+            sum+=n/i;
+            }
+        }
+        if(sum==n)
+        return true;
+        
+    return false;    
+        }
+}
